@@ -10,7 +10,12 @@ const AdditionalSchema = new mongoose.Schema({
     type: Number,
     require: true,
   },
-  user: {
+  sale: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Sale',
+    require: true,
+  },
+  assignedTo: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     require: true,
