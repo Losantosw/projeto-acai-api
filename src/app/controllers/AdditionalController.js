@@ -1,12 +1,17 @@
 const express = require('express');
 const Additional = require('../models/Additional');
 
+const authMiddleware = require('../middlewares/auth');
+const authorizationMiddleware = require('../middlewares/authorization');
+
 const router = express.Router();
+
+router.use(authMiddleware, authorizationMiddleware);
 
 //Listar todos os cadastros
 router.get('/', async (req, res) => {
     try {
-      const additionals = await Additional.find().populate(['user', 'additionals']);
+      const additionals = await Additional.find().populate(['infocup', 'additionals']);
   
       return res.send({ additionals });
     } catch (err) {
@@ -17,7 +22,7 @@ router.get('/', async (req, res) => {
 //Exibir um cadastro por id
 router.get('/:additionalId', async (req, res) => {
     try {
-      const additional = await Additional.findById(req.params.additionalId).populate(['user', 'additionals']);
+      const additional = await Additional.findById(req.params.additionalId).populate(['infocup', 'additionals']);
   
       return res.send({ additional });
     } catch (err) {
@@ -28,9 +33,9 @@ router.get('/:additionalId', async (req, res) => {
 //Criar novo cadastro
 router.post('/', async (req, res) => {
     try {
-      const { desc_additional, price_additional } = req.body;
+      const { info_additional, price_additional } = req.body;
   
-      const additional = await Additional.create({ desc_additional, price_additional, user: req.userId });
+      const additional = await Additional.create({ info_additional, price_additional });
   
       await additional.save();
   
@@ -43,10 +48,10 @@ router.post('/', async (req, res) => {
 //Editar um cadastro
 router.put('/:additionalId', async (req, res) => {
     try {
-      const { desc_additional, price_additional } = req.body;
+      const { info_additional, price_additional } = req.body;
   
       const additional = await Additional.findByIdAndUpdate(req.params.additionalId, {
-        desc_additional,
+        info_additional,
         price_additional
       }, { new: true, useFindAndModify: false });
    

@@ -1,7 +1,14 @@
 const express = require('express');
 const Acai = require('../models/Acai');
+const Additional = require('../models/Additional');
+const InfoCup = require('../models/InfoCup');
+
+const authMiddleware = require('../middlewares/auth');
+const authorizationMiddleware = require('../middlewares/authorization');
 
 const router = express.Router();
+
+router.use(authMiddleware, authorizationMiddleware);
 
 //Listar todos os cadastros
 router.get('/', async (req, res) => {
@@ -27,27 +34,37 @@ router.get('/:acaiId', async (req, res) => {
 
 //Criar novo cadastro
 router.post('/', async (req, res) => {
-    try {
-      const { desc_cup, price_cup } = req.body;
-  
-      const acai = await Acai.create({ desc_cup, price_cup, user: req.userId });
-  
-      await acai.save();
-  
-      return res.send({ acai });
-    } catch (err) {
-      return res.status(400).send({ error: 'Error creating new acai' });
-    }
+  try {
+    const { name_product, infocups } = req.body;
+
+    const acai = await Acai.create({ name_product, user: req.userId });
+
+    await Promise.all(infocups.map(async infocup => {
+      const insertInfoCups = new InfoCup({ ...infocup, acai: acai._id });
+
+      await insertInfoCups.save();
+
+      acai.infocups.push(insertInfoCups);
+    }));
+    
+
+    await acai.save();
+
+    return res.send({ acai });
+  } catch (err) {
+    console.log(err);
+    return res.status(400).send({ error: 'Error creating new acai' });
+  }
 });
 
 //Editar um cadastro
 router.put('/:acaiId', async (req, res) => {
     try {
-      const { desc_cup, price_cup } = req.body;
+      const { name_product } = req.body;
   
-      const acai = await Acai.findByIdAndUpdate(req.params.acaiId, {
-        desc_cup,
-        price_cup
+      const acai = await Acai.findByIdAndUpdate(req.params.acaiId, req.additionalId,{
+        name_product,
+    
       }, { new: true, useFindAndModify: false });
    
       await acai.save();

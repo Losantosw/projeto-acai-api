@@ -1,18 +1,13 @@
 const mongoose = require('../../database');
 const bcrypt = require('bcryptjs');
 
-const AdditionalSchema = new mongoose.Schema({
-  info_additional: {
+const InfoCupSchema = new mongoose.Schema({
+  size_cup: {
     type: String,
     require: true,
   },
-  price_additional: {
+  price_cup: {
     type: Number,
-    require: true,
-  },
-  infocup: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'InfoCup',
     require: true,
   },
   assignedTo: {
@@ -20,12 +15,20 @@ const AdditionalSchema = new mongoose.Schema({
     ref: 'User',
     require: true,
   },
+  additionals: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Additional',
+  }],
+  acai: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Acai',
+  },
   createdAt: {
     type: Date,
     default: Date.now,
   },
 });
 
-const Additional = mongoose.model('Additional', AdditionalSchema);
+const InfoCup = mongoose.model('InfoCup', InfoCupSchema);
 
-module.exports = Additional;
+module.exports = InfoCup;
