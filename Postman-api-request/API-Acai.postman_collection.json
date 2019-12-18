@@ -1,0 +1,859 @@
+{
+	"info": {
+		"_postman_id": "6f5f6f0f-56f5-4558-9ad2-cbb979d2353e",
+		"name": "API-Acai",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "CreateUserAdmin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"Admin\",\n\t\"email\":\"admin@gmail.com\",\n\t\"password\":\"123456\",\n\t\"isAdmin\":true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						},
+						"description": "Criando usuário admin "
+					},
+					"response": []
+				},
+				{
+					"name": "CreateUserNotAdmin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"NotAdmin\",\n\t\"email\":\"notadmin@gmail.com\",\n\t\"password\":\"123456\",\n\t\"isAdmin\":true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						},
+						"description": "Criando usuário admin "
+					},
+					"response": []
+				},
+				{
+					"name": "AuthenticateUserAdmin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"admin@gmail.com\",\n\t\"password\":\"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/authenticate",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"authenticate"
+							]
+						},
+						"description": "autenticação de usuário\n"
+					},
+					"response": []
+				},
+				{
+					"name": "AuthenticateUserNotAdmin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"notadmin@gmail.com\",\n\t\"password\":\"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/authenticate",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"authenticate"
+							]
+						},
+						"description": "autenticação de usuário\n"
+					},
+					"response": []
+				},
+				{
+					"name": "ForgotPassUserAdmin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkZjEyYzllNmU4MGZkNDBhYTc0YWRlNCIsImlhdCI6MTU3NjA4NjY4NywiZXhwIjoxNTc2MTczMDg3fQ.AfihfG2KwYOxHsmktij0bcKLwqlWbmlrPKTdbQmo2ts",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"admin@gmail.com\",\n\t\"password\":\"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/forgot_password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"forgot_password"
+							]
+						},
+						"description": "recuperando o token para alterar a senha\n"
+					},
+					"response": []
+				},
+				{
+					"name": "ForgotPassUserNotAdmin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkZjEyYzllNmU4MGZkNDBhYTc0YWRlNCIsImlhdCI6MTU3NjA4NjY4NywiZXhwIjoxNTc2MTczMDg3fQ.AfihfG2KwYOxHsmktij0bcKLwqlWbmlrPKTdbQmo2ts",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"notadmin@gmail.com\",\n\t\"password\":\"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/forgot_password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"forgot_password"
+							]
+						},
+						"description": "recuperando o token para alterar a senha\n"
+					},
+					"response": []
+				},
+				{
+					"name": "ResetPasswordUserAdmin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"admin@gmail.com\",\n\t\"token\":\"{{tokenRedefinirAdmin}}\",\n\t\"password\":\"222225\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/reset_password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"reset_password"
+							]
+						},
+						"description": "alterar a senha do usuário"
+					},
+					"response": []
+				},
+				{
+					"name": "ResetPasswordUserNotAdmin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"notadmin@gmail.com\",\n\t\"token\":\"{{tokenRedefinirNotAdmin}}\",\n\t\"password\":\"222225\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/auth/reset_password",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"reset_password"
+							]
+						},
+						"description": "alterar a senha do usuário"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "additional",
+			"item": [
+				{
+					"name": "CreateAdditional",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"info_additional\":\"Granola\",\n\t\"price_additional\":\"2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/additionals",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"additionals"
+							]
+						},
+						"description": "criando um novo cadastro"
+					},
+					"response": []
+				},
+				{
+					"name": "ShowAllAdditionals",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/additionals",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"additionals"
+							]
+						},
+						"description": "mostrar todos os cadastros"
+					},
+					"response": []
+				},
+				{
+					"name": "ShowAdditionalById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/additionals/5df7c83e0c276c4be1ab4a1b",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"additionals",
+								"5df7c83e0c276c4be1ab4a1b"
+							]
+						},
+						"description": "mostrar dados por id"
+					},
+					"response": []
+				},
+				{
+					"name": "EditAdditionalById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"desc_additional\":\"Banana em fatias\",\n\t\"price_additional\":\"4.5\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/additionals/5df7c83e0c276c4be1ab4a1b",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"additionals",
+								"5df7c83e0c276c4be1ab4a1b"
+							]
+						},
+						"description": "edição de cadastro pelo id"
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteAdditional",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/additionals/5df7cb80c4a2294f894ab200",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"additionals",
+								"5df7cb80c4a2294f894ab200"
+							]
+						},
+						"description": "deletar por id"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "infocup",
+			"item": [
+				{
+					"name": "CreateInfoCup",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"size_cup\":\"Tamanho M\",\n\t\"price_cup\":\"6.2\",\n\t\"additionals\": [\n\t\t{\n\t\t\t\"info_additional\":\"Banana em fatias\",\n\t\t\t\"price_additional\":\"4.3\"\n\t\t}\n\t]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/infocups",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"infocups"
+							]
+						},
+						"description": "criando o copo de acai com adicional ou não"
+					},
+					"response": []
+				},
+				{
+					"name": "EditInfoCup",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"size_cup\":\"Tamanho G\",\n\t\"price_cup\":\"5\",\n\t\"additionals\": [\n\t\t{\n\t\t\t\"info_additional\":\"Granola\",\n\t\t\t\"price_additional\":\"3\"\n\t\t}\n\t]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/infocups/5df7e5795b4c7362dfaad07b",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"infocups",
+								"5df7e5795b4c7362dfaad07b"
+							]
+						},
+						"description": "criando o copo de acai com adicional ou não"
+					},
+					"response": []
+				},
+				{
+					"name": "ListAllInfoCups",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/infocups",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"infocups"
+							]
+						},
+						"description": "informando todos os copos\n"
+					},
+					"response": []
+				},
+				{
+					"name": "ListInfoCupsById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/infocups/5df7cd5dc40be55076652df9",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"infocups",
+								"5df7cd5dc40be55076652df9"
+							]
+						},
+						"description": "informando todos os copos\n"
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteInfoCup",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/infocups/5df7d83087577858b16d4f4e",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"infocups",
+								"5df7d83087577858b16d4f4e"
+							]
+						},
+						"description": "apagar infocup"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "acai",
+			"item": [
+				{
+					"name": "CreateAcai",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name_product\":\"Açai com ninho\",\n\t\"infocups\": [{\n\t\t\t\"size_cup\":\"Tamanho M\",\n\t\t\t\"price_cup\":\"3\",\n\t\t\t\n\t\t\t\"additionals\": [{\n\t\t\t\t\"info_additional\":\"Leite Ninho\",\n\t\t\t\t\"price_additional\":\"2\"\n\t\t\t}]\n\t}]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/acais",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"acais"
+							]
+						},
+						"description": "criando o copo de acai com adicional ou não"
+					},
+					"response": []
+				},
+				{
+					"name": "EditInfoCup",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"size_cup\":\"Tamanho G\",\n\t\"price_cup\":\"5\",\n\t\"additionals\": [\n\t\t{\n\t\t\t\"info_additional\":\"Granola\",\n\t\t\t\"price_additional\":\"3\"\n\t\t}\n\t]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/infocups/5df7e5795b4c7362dfaad07b",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"infocups",
+								"5df7e5795b4c7362dfaad07b"
+							]
+						},
+						"description": "criando o copo de acai com adicional ou não"
+					},
+					"response": []
+				},
+				{
+					"name": "ListAllInfoCups",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/infocups",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"infocups"
+							]
+						},
+						"description": "informando todos os copos\n"
+					},
+					"response": []
+				},
+				{
+					"name": "ListInfoCupsById",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/infocups/5df7cd5dc40be55076652df9",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"infocups",
+								"5df7cd5dc40be55076652df9"
+							]
+						},
+						"description": "informando todos os copos\n"
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteInfoCup",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/infocups/5df7d83087577858b16d4f4e",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"infocups",
+								"5df7d83087577858b16d4f4e"
+							]
+						},
+						"description": "apagar infocup"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
